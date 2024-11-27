@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  onboarding_service:
+    build: .
+    container_name: Onboarding_Service
+    ports:
+      - "8080:8080"  
+    environment:
+      - ENV_FILE=.env 
+    volumes:
+      - ./data:/app/data  # Volume Bind for Persistent Data Storage
+    networks:
+      - onboarding_network
+
+networks:
+  onboarding_network:
+    driver: bridge
